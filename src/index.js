@@ -1,12 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Button } from 'antd'
+import css from './index.module.less'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function App () {
+  return (
+    <div className={css.test}>
+      <p>hello react</p>
+      <Button type="primary" icon="search">click</Button>
+    </div>
+  )
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const element = <App />
+
+ReactDOM.render(element, document.querySelector('#root'))
