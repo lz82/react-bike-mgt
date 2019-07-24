@@ -1,13 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Button } from 'antd'
-import css from './index.module.less'
+import LayoutMain from './layout/main'
 
 function App() {
   return (
-    <div className={css.test}>
-      <p>hello react</p>
-      <Button type="primary" icon="search">click</Button>
+    <div>
+      <LayoutMain />
     </div>
   )
 }
