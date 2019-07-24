@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Button } from 'antd'
 import css from './index.module.less'
 
-function App () {
+function App() {
   return (
     <div className={css.test}>
       <p>hello react</p>
