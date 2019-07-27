@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import LayoutMain from './layout/main'
+import LayoutMain from './layout/main/index'
 
 function App() {
   return (

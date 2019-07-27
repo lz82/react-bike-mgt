@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { Layout, Breadcrumb, Icon } from 'antd'
 
+import NavLeft from '@/components/nav-left'
+
+import css from './index.module.less'
+
 const { Header, Content, Footer, Sider } = Layout
 
 export default class LayoutMain extends Component {
@@ -12,6 +16,8 @@ export default class LayoutMain extends Component {
         <Sider
           collapsible
         >
+          <div className={css.logo}></div>
+          <NavLeft />
         </Sider>
         <Layout>
           <Header
@@ -27,7 +33,7 @@ export default class LayoutMain extends Component {
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}><Icon type="pie-chart" />Bill is a cat.</div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: 'center' }}>React ©2019 Created by Liuzhuang</Footer>
         </Layout>
       </Layout>
     )

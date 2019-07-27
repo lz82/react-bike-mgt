@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "icon": "pie-chart",
+    "text": "Chart",
+    "link": "/report/list"
+  },
+  {
+    "id": 2,
+    "icon": "desktop",
+    "text": "Desktop",
+    "link": "/desktop"
+  },
+  {
+    "id": 3,
+    "icon": "user",
+    "text": "User",
+    "child": [
+      {
+        "id": 4,
+        "text": "legal",
+        "link": "/user/legal"
+      },
+      {
+        "id": 5,
+        "text": "org",
+        "link": "/user/org"
+      },
+      {
+        "id": 6,
+        "text": "dept",
+        "link": "/user/dept"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "icon": "team",
+    "text": "Team",
+    "child": [
+      {
+        "id": 8,
+        "text": "team1",
+        "link": "/team/team1"
+      },
+      {
+        "id": 9,
+        "text": "team2",
+        "link": "/team1/team2"
+      },
+      {
+        "id": 10,
+        "text": "team3",
+        "link": "/team1/team3"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "icon": "file",
+    "text": "File",
+    "link": "/file"
+  }
+]
