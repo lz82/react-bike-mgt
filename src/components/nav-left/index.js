@@ -29,9 +29,6 @@ export default class NavLeft extends Component {
   getMenu(data) {
     const menu = data.map(item => {
       if (item.child) {
-        console.log(item.child)
-        const temp  = this.getMenu(item.child)
-        // console.log(temp)
         return (
           <SubMenu
             key={item.id}
@@ -42,7 +39,7 @@ export default class NavLeft extends Component {
               </span>
             }
           >
-            {temp}
+            {this.getMenu(item.child)}
           </SubMenu>
         )
       } else {
@@ -67,13 +64,12 @@ export default class NavLeft extends Component {
   }
 
   render() {
-    const menu = this.getMenu(this.state.menu)
     return (
       <div className={css['menu-wrapper']}>
         <Menu
           theme="dark"
         >
-          {menu}
+          {this.getMenu(this.state.menu)}
         </Menu>
       </div>
     )
