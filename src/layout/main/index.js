@@ -4,6 +4,7 @@ import { Layout, Breadcrumb, Icon } from 'antd'
 import NavLeft from '@/components/nav-left'
 
 import css from './index.module.less'
+import logo from '@/styles/assets/img/logo.svg'
 
 const { Header, Content, Footer, Sider } = Layout
 
@@ -16,7 +17,9 @@ export default class LayoutMain extends Component {
         <Sider
           collapsible
         >
-          <div className={css.logo}></div>
+          <div className={css.logo}>
+            <img src={logo} width="50px" height="50px" />
+          </div>
           <NavLeft />
         </Sider>
         <Layout>
