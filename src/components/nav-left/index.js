@@ -21,6 +21,13 @@ export default class NavLeft extends Component {
     })
   }
 
+  // async componentWillMount() {
+  //   const menu = await this.getMenuData()
+  //   this.setState({
+  //     menu: menu
+  //   })
+  // }
+
   async getMenuData() {
     const menu = await commonApi.getMenu()
     return menu
@@ -52,7 +59,6 @@ export default class NavLeft extends Component {
         } else {
           menuCtx = <span>{item.text}</span>
         }
-        console.log(menuCtx)
         return (
           <Menu.Item key={item.id}>
             {menuCtx}

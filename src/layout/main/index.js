@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Layout, Breadcrumb, Icon } from 'antd'
+import { Layout, Icon } from 'antd'
 
 import NavLeft from '@/components/nav-left'
+import CustomerHeader from '@/components/header'
 
 import css from './index.module.less'
 import logo from '@/styles/assets/img/logo.svg'
@@ -24,17 +25,16 @@ export default class LayoutMain extends Component {
         </Sider>
         <Layout>
           <Header
-            style={{ background: '#fff', padding: 0 }}
+            className={css.header}
           >
+            <CustomerHeader />
           </Header>
           <Content
-            style={{ margin: '0 16px' }}
+            style={{ margin: '16px' }}
           >
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}><Icon type="pie-chart" />Bill is a cat.</div>
+            <div className={css['content-container']}>
+              <Icon type="pie-chart" />Bill is a cat.
+            </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>React ©2019 Created by Liuzhuang</Footer>
         </Layout>
