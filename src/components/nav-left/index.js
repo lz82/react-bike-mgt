@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import css from './index.module.less'
 import { Menu, Icon } from 'antd'
 
@@ -54,10 +55,10 @@ export default class NavLeft extends Component {
         if (item.icon) {
           menuCtx = (<span>
             <Icon type={item.icon} />
-            <span>{item.text}</span>
+            <NavLink to={item.link}>{item.text}</NavLink>
           </span>)
         } else {
-          menuCtx = <span>{item.text}</span>
+          menuCtx = <NavLink to={item.link}>{item.text}</NavLink>
         }
         return (
           <Menu.Item key={item.id}>

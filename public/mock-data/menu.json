@@ -1,5 +1,11 @@
 [
   {
+    "id": 0,
+    "icon": "pie-chart",
+    "text": "Dashboard",
+    "link": "/home"
+  },
+  {
     "id": 1,
     "icon": "pie-chart",
     "text": "Chart",
