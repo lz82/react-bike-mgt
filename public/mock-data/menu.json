@@ -3,19 +3,19 @@
     "id": 0,
     "icon": "pie-chart",
     "text": "Dashboard",
-    "link": "/home"
+    "link": "/admin/index"
   },
   {
     "id": 1,
     "icon": "pie-chart",
     "text": "Chart",
-    "link": "/report/list"
+    "link": "/admin/chart"
   },
   {
     "id": 2,
     "icon": "desktop",
     "text": "Desktop",
-    "link": "/desktop"
+    "link": "/admin/desktop"
   },
   {
     "id": 3,

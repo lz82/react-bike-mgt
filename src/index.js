@@ -1,15 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import LayoutMain from './layout/main/index'
+import App from './app'
 
-function App() {
-  return (
-    <div>
-      <LayoutMain />
-    </div>
-  )
-}
 
-const element = <App />
-
-ReactDOM.render(element, document.querySelector('#root'))
+ReactDOM.render(<App />, document.querySelector('#root'))

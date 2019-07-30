@@ -8,8 +8,8 @@ export default class MainRouter extends Component {
   render() {
     return (
       <div>
-        <Route path="/home" component={Home} />
-        <Route path="/about" component={About} />
+        <Route path="/admin/index" component={Home} />
+        <Route path="/admin/about" component={About} />
       </div>
     )
   }
