@@ -11,6 +11,7 @@ export default class HomePage extends Component {
     return (
       <div className={css['homepage-wrapper']}>
         this is home page.
+
       </div>
     )
   }
