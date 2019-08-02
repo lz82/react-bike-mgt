@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import Home from '@/pages/home'
 import About from '@/pages/about'
 import Button from '@/pages/button'
+import Spin from '@/pages/spin'
 
 export default class MainRouter extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class MainRouter extends Component {
           <Route path="/admin/index" component={Home} />
           <Route path="/admin/about" component={About} />
           <Route path="/admin/component/button" component={Button} />
+          <Route path="/admin/component/spin" component={Spin} />
           <Route component={Home} />
         </Switch>
       </div>

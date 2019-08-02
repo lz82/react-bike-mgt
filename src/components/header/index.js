@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Breadcrumb, Menu, Dropdown, Avatar, Tag } from 'antd'
+import { withRouter } from 'react-router-dom'
 import css from './index.module.less'
 
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -42,6 +43,10 @@ export default class Header extends Component {
     this.setState({
       currentTime: time
     })
+  }
+
+  handleTagClick = link => {
+    this.props.history.push(link)
   }
 
   render() {
@@ -85,12 +90,14 @@ export default class Header extends Component {
           <Tag
             closable
             className={[css.tagitem, css.active]}
+            onClick={() => this.handleTagClick('/admin/index')}
           >
             Home
           </Tag>
           <Tag
             closable
             className={[css.tagitem]}
+            onClick={() => this.handleTagClick('/admin/index')}
           >
             other
           </Tag>
@@ -99,3 +106,5 @@ export default class Header extends Component {
     )
   }
 }
+
+export default withRouter(Header)

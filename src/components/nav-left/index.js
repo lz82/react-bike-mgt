@@ -36,7 +36,6 @@ class NavLeft extends Component {
   }
 
   handleJump(link) {
-    debugger
     this.props.history.push(link)
   }
 

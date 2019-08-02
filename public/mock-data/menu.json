@@ -20,6 +20,11 @@
         "id": 13,
         "text": "button",
         "link": "/admin/component/button"
+      },
+      {
+        "id": 14,
+        "text": "spin",
+        "link": "/admin/component/spin"
       }
     ]
   },
