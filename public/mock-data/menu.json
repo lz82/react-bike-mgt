@@ -1,8 +1,8 @@
 [
   {
     "id": 0,
-    "icon": "pie-chart",
-    "text": "Dashboard",
+    "icon": "home",
+    "text": "Home",
     "link": "/admin/index"
   },
   {
@@ -10,6 +10,18 @@
     "icon": "pie-chart",
     "text": "Chart",
     "link": "/admin/chart"
+  },
+  {
+    "id": 12,
+    "icon": "appstore",
+    "text": "Component",
+    "child": [
+      {
+        "id": 13,
+        "text": "button",
+        "link": "/admin/component/button"
+      }
+    ]
   },
   {
     "id": 2,

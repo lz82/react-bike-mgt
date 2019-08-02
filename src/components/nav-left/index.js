@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import css from './index.module.less'
 import { Menu, Icon } from 'antd'
 
@@ -7,12 +7,13 @@ import { commonApi } from '@/service/index'
 
 const { SubMenu } = Menu
 
-export default class NavLeft extends Component {
+class NavLeft extends Component {
   constructor(props) {
     super(props)
     this.state = {
       menu: []
     }
+    this.handleJump = this.handleJump.bind(this)
   }
 
   async componentDidMount() {
@@ -32,6 +33,11 @@ export default class NavLeft extends Component {
   async getMenuData() {
     const menu = await commonApi.getMenu()
     return menu
+  }
+
+  handleJump(link) {
+    debugger
+    this.props.history.push(link)
   }
 
   getMenu(data) {
@@ -55,10 +61,12 @@ export default class NavLeft extends Component {
         if (item.icon) {
           menuCtx = (<span>
             <Icon type={item.icon} />
-            <NavLink to={item.link}>{item.text}</NavLink>
+            {/* <NavLink to={item.link}>{item.text}</NavLink> */}
+            <span onClick={() => this.handleJump(item.link)}>{item.text}</span>
           </span>)
         } else {
-          menuCtx = <NavLink to={item.link}>{item.text}</NavLink>
+          // menuCtx = <NavLink to={item.link}>{item.text}</NavLink>
+          menuCtx = <span onClick={() => this.handleJump(item.link)}>{item.text}</span>
         }
         return (
           <Menu.Item key={item.id}>
@@ -82,3 +90,5 @@ export default class NavLeft extends Component {
     )
   }
 }
+
+export default withRouter(NavLeft)

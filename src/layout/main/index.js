@@ -13,11 +13,17 @@ import logo from '@/styles/assets/img/logo.svg'
 const { Header, Content, Footer, Sider } = Layout
 
 export default class LayoutMain extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
   render() {
+    console.log('layout', this.props)
     return (
       <Router>
         <Layout
-          style={{ minHeight: '100vh' }}
+          style={{ height: '100vh' }}
         >
           <Sider
             collapsible
@@ -40,7 +46,7 @@ export default class LayoutMain extends Component {
                 <MainRouter />
               </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>React ©2019 Created by Liuzhuang</Footer>
+            <Footer style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px 0' }}>React ©2019 Created by Liuzhuang</Footer>
           </Layout>
         </Layout>
       </Router>
