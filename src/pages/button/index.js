@@ -34,11 +34,11 @@ export default class ButtonPage extends Component {
   }
 
   handleMenuClick(e) {
-    console.log(e)
+    // console.log(e)
   }
 
   handleBtnClick(e) {
-    console.log(e)
+    // console.log(e)
   }
 
   handleSizeChange(e) {

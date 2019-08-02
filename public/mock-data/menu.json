@@ -25,6 +25,11 @@
         "id": 14,
         "text": "spin",
         "link": "/admin/component/spin"
+      },
+      {
+        "id": 15,
+        "text": "modal",
+        "link": "/admin/component/modal"
       }
     ]
   },

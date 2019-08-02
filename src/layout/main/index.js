@@ -19,7 +19,6 @@ export default class LayoutMain extends Component {
   }
 
   render() {
-    console.log('layout', this.props)
     return (
       <Router>
         <Layout
