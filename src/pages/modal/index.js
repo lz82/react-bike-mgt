@@ -10,7 +10,8 @@ export default class ModalPage extends Component {
       showBasic: false,
       showFooter: false,
       showAsync: false,
-      confirmLoading: false
+      confirmLoading: false,
+      showConfirm: false
     }
   }
 
@@ -42,6 +43,59 @@ export default class ModalPage extends Component {
         confirmLoading: false
       })
     }, 2000)
+  }
+
+  handleConfirm(status) {
+    Modal.confirm({
+      title: '确认删除吗？',
+      content: 'some descriptions',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      okButtonProps: {
+        disabled: true
+      },
+      onOk() {
+        console.log('OK')
+      },
+      onCancel() {
+        console.log('Cancel')
+      }
+    })
+  }
+
+  handleShowTip(type) {
+    Modal[type]({
+      title: `this is a ${type} message`,
+      content: (
+        <div>
+          <p>some message...some message...</p>
+          <p>some message...some message...</p>
+          <p>some message...some message...</p>
+        </div>
+      ),
+      onOk() {
+        console.log('tip ok')
+      }
+    })
+  }
+
+  handleManual() {
+    let countdown = 10
+    const modal = Modal.success({
+      title: 'this is a notification message',
+      content: `this modal will destroyed after ${countdown} seconde...`
+    })
+    const timer = setInterval(() => {
+      modal.update({
+        content: `this modal will destroyed after ${--countdown} seconde...`
+      })
+    }, 1000)
+
+    setTimeout(() => {
+      clearInterval(timer)
+      modal.destroy()
+    }, countdown * 1000)
   }
 
   customFooter =
@@ -121,6 +175,34 @@ export default class ModalPage extends Component {
           >
             <p>Some content...</p>
           </Modal>
+        </Card>
+
+        <Card
+          title="confirm对话框"
+          className={css['card-wrapper']}
+        >
+          <Button
+            type="primary"
+            onClick={this.handleConfirm.bind(this, true)}
+          >
+            打开confirm对话框
+          </Button>
+        </Card>
+
+        <Card
+          title="信息提示弹框"
+          className={css['card-wrapper']}
+        >
+          <Button onClick={this.handleShowTip.bind(this, 'info')}>Info</Button>
+          <Button onClick={this.handleShowTip.bind(this, 'success')}>success</Button>
+          <Button onClick={this.handleShowTip.bind(this, 'error')}>error</Button>
+          <Button onClick={this.handleShowTip.bind(this, 'warning')}>warning</Button>
+        </Card>
+
+        <Card
+          title="手动更新和销毁对话框"
+        >
+          <Button onClick={this.handleManual.bind(this)}>confirm</Button>
         </Card>
       </div>
     )
