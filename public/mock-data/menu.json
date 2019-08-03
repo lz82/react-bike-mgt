@@ -30,6 +30,11 @@
         "id": 15,
         "text": "modal",
         "link": "/admin/component/modal"
+      },
+      {
+        "id": 16,
+        "text": "notification",
+        "link": "/admin/component/notification"
       }
     ]
   },

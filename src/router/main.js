@@ -6,6 +6,7 @@ import About from '@/pages/about'
 import Button from '@/pages/button'
 import Spin from '@/pages/spin'
 import Modal from '@/pages/modal'
+import Notification from '@/pages/notification'
 
 export default class MainRouter extends Component {
   render() {
@@ -17,6 +18,7 @@ export default class MainRouter extends Component {
           <Route path="/admin/component/button" component={Button} />
           <Route path="/admin/component/spin" component={Spin} />
           <Route path="/admin/component/modal" component={Modal} />
+          <Route path="/admin/component/notification" component={Notification} />
           <Route component={Home} />
         </Switch>
       </div>
