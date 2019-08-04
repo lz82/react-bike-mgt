@@ -8,6 +8,8 @@ import Spin from '@/pages/spin'
 import Modal from '@/pages/modal'
 import Notification from '@/pages/notification'
 
+import BasicForm from '@/pages/form/basic'
+
 export default class MainRouter extends Component {
   render() {
     return (
@@ -19,6 +21,7 @@ export default class MainRouter extends Component {
           <Route path="/admin/component/spin" component={Spin} />
           <Route path="/admin/component/modal" component={Modal} />
           <Route path="/admin/component/notification" component={Notification} />
+          <Route path="/admin/form/basic" component={BasicForm} />
           <Route component={Home} />
         </Switch>
       </div>
