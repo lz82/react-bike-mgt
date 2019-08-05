@@ -43,6 +43,9 @@ class BasicForm extends Component {
           onSubmit={this.handleSubmit.bind(this)}
           name="basic"
         >
+          <Form.Item>
+            <h3 style={{ textAlign: 'center' }}>欢迎使用</h3>
+          </Form.Item>
           <Form.Item
             validateStatus={usernameError ? 'error' : ''}
             help={usernameError || ''}
