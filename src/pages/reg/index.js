@@ -1,9 +1,70 @@
 import React, { Component } from 'react'
-import { Card, Form, Input, Cascader, Button } from 'antd'
+import { Card, Form, Input, Cascader, Button, Tooltip, Icon, Select, AutoComplete, Row, Col, Checkbox } from 'antd'
 
 import css from './index.module.less'
 
+const residences = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men'
+          }
+        ]
+      }
+    ]
+  }
+]
+
 class RegPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      websiteDataSource: []
+    }
+  }
+
+  handleWebsiteChange = val => {
+    let websiteDataSource = []
+    if (val) {
+      websiteDataSource = ['.com', '.cn', '.net', '.org'].map(domain => `${val}${domain}`)
+    }
+    this.setState({
+      websiteDataSource
+    })
+  }
+
+  handleReg = e => {
+    e.preventDefault()
+    this.props.form.validateFields((err, val) => {
+      if (!err) {
+        console.log(val)
+      }
+    })
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     const formItemLayout = {
@@ -16,6 +77,33 @@ class RegPage extends Component {
         sm: { span: 16 }
       }
     }
+
+    const centerItemLayout = {
+      wrapperCol: {
+        xs: {
+          span: 24,
+          offset: 0
+        },
+        sm: {
+          span: 16,
+          offset: 8
+        }
+      }
+    }
+
+    const prefixSelector = getFieldDecorator('prefix', {
+      initialValue: '86'
+    })(<Select>
+      <Select.Option value="86">+86</Select.Option>
+      <Select.Option value="87">+87</Select.Option>
+    </Select>)
+
+    const websiteOptions = this.state.websiteDataSource.map(item => {
+      return (
+        <AutoComplete.Option key={item}>{item}</AutoComplete.Option>
+      )
+    })
+
     return (
       <div className={css['reg-page-wrapper']}>
         <Card
@@ -24,6 +112,7 @@ class RegPage extends Component {
         >
           <Form
             {...formItemLayout}
+            onSubmit={this.handleReg}
           >
             <Form.Item
               label="E-mail"
@@ -63,12 +152,23 @@ class RegPage extends Component {
               }
             </Form.Item>
             <Form.Item
-              label="Nickname"
+              label={
+                <span>
+                  Nickyname&nbsp;
+                  <Tooltip
+                    title="what do you want others to call you?"
+                  >
+                    <Icon
+                      type="question-circle-o"
+                    />
+                  </Tooltip>
+                </span>
+              }
             >
               {
                 getFieldDecorator('nickname', {
                   rules: [
-                    { required: true, message: 'please input nickname' }
+                    { required: true, message: 'please input nickname', whitespace: true }
                   ]
                 })(<Input />)
               }
@@ -78,10 +178,13 @@ class RegPage extends Component {
             >
               {
                 getFieldDecorator('residence', {
+                  initialValue: ['zhejiang', 'hangzhou', 'xihu'],
                   rules: [
                     { required: true, message: 'please input habitual residence' }
                   ]
-                })(<Cascader />)
+                })(<Cascader
+                  options={residences}
+                />)
               }
             </Form.Item>
             <Form.Item
@@ -92,7 +195,10 @@ class RegPage extends Component {
                   rules: [
                     { required: true, message: 'please input phone number' }
                   ]
-                })(<Input />)
+                })(<Input
+                  addonBefore={prefixSelector}
+                  style={{ width: '100%' }}
+                />)
               }
             </Form.Item>
             <Form.Item
@@ -103,24 +209,61 @@ class RegPage extends Component {
                   rules: [
                     { required: true, message: 'please input your website' }
                   ]
-                })(<Input />)
+                })(<AutoComplete
+                  placeholder="website"
+                  dataSource={websiteOptions}
+                  onChange={this.handleWebsiteChange}
+                >
+                  <Input />
+                </AutoComplete>)
               }
             </Form.Item>
             <Form.Item
               label="Captcha"
+              extra="We must make sure that you are a human."
             >
-              <div className={css['form-row']}>
-                {
-                  getFieldDecorator('captcha', {
-                    rules: [
-                      { required: true, message: 'please input captcha' }
-                    ]
-                  })(<Input />)
-                }
-                <Button>
-                  Get captcha
-                </Button>
-              </div>
+              <Row
+                gutter={8}
+              >
+                <Col
+                  span={12}>
+                  {
+                    getFieldDecorator('captcha', {
+                      rules: [
+                        { required: true, message: 'please input captcha' }
+                      ]
+                    })(<Input />)
+                  }
+                </Col>
+                <Col
+                  span={12}
+                >
+                  <Button>
+                    Get captcha
+                  </Button>
+                </Col>
+              </Row>
+            </Form.Item>
+            <Form.Item
+              {...centerItemLayout}
+            >
+              {
+                getFieldDecorator('agreement', {
+                  valuePropName: 'checked'
+                })(<Checkbox>
+                  I have read the <a href="">agreement</a>
+                </Checkbox>)
+              }
+            </Form.Item>
+            <Form.Item
+              {...centerItemLayout}
+            >
+              <Button
+                type="primary"
+                htmlType="submit"
+              >
+                Register
+              </Button>
             </Form.Item>
           </Form>
         </Card>
