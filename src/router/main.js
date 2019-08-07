@@ -9,6 +9,7 @@ import Modal from '@/pages/modal'
 import Notification from '@/pages/notification'
 
 import BasicForm from '@/pages/form/basic'
+import UserInfoForm from '@/pages/form/userinfo'
 
 export default class MainRouter extends Component {
   render() {
@@ -22,6 +23,7 @@ export default class MainRouter extends Component {
           <Route path="/admin/component/modal" component={Modal} />
           <Route path="/admin/component/notification" component={Notification} />
           <Route path="/admin/form/basic" component={BasicForm} />
+          <Route path="/admin/form/userinfo" component={UserInfoForm} />
           <Route component={Home} />
         </Switch>
       </div>

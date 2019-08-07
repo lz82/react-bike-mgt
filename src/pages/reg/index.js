@@ -42,7 +42,8 @@ class RegPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      websiteDataSource: []
+      websiteDataSource: [],
+      confirmDirty: false
     }
   }
 
@@ -58,11 +59,38 @@ class RegPage extends Component {
 
   handleReg = e => {
     e.preventDefault()
-    this.props.form.validateFields((err, val) => {
+    this.props.form.validateFieldsAndScroll((err, val) => {
       if (!err) {
         console.log(val)
       }
     })
+  }
+
+  handleConfirmBlur = e => {
+    console.log(e.target.value)
+    if (e.target.value) {
+      this.setState({
+        confirmDirty: true
+      })
+    }
+  }
+
+  validate2Confirm = (rule, value, cb) => {
+    console.log(rule)
+    const { form } = this.props
+    if (value && this.state.confirmDirty) {
+      form.validateFields(['confirm'], { force: true })
+    }
+    cb()
+  }
+
+  validate2Password = (rule, val, cb) => {
+    const { form } = this.props
+    if (val && val !== form.getFieldValue('password')) {
+      cb('two passwords that you enter is inconsistent!')
+    } else {
+      cb()
+    }
   }
 
   render() {
@@ -116,6 +144,7 @@ class RegPage extends Component {
           >
             <Form.Item
               label="E-mail"
+              hasFeedback
             >
               {
                 getFieldDecorator('email', {
@@ -135,20 +164,25 @@ class RegPage extends Component {
               {
                 getFieldDecorator('password', {
                   rules: [
-                    { required: true, message: 'please input password' }
+                    { required: true, message: 'please input password' },
+                    { validator: this.validate2Confirm }
                   ]
                 })(<Input.Password />)
               }
             </Form.Item>
             <Form.Item
               label="Confirm Password"
+              hasFeedback
             >
               {
                 getFieldDecorator('confirm', {
                   rules: [
-                    { required: true, message: 'please input confirm password' }
+                    { required: true, message: 'please input confirm password' },
+                    { validator: this.validate2Password }
                   ]
-                })(<Input.Password />)
+                })(<Input.Password
+                  onBlur={this.handleConfirmBlur}
+                />)
               }
             </Form.Item>
             <Form.Item
@@ -164,6 +198,7 @@ class RegPage extends Component {
                   </Tooltip>
                 </span>
               }
+              hasFeedback
             >
               {
                 getFieldDecorator('nickname', {
@@ -174,7 +209,8 @@ class RegPage extends Component {
               }
             </Form.Item>
             <Form.Item
-              label="Habitual Residence:"
+              label="Habitual Residence"
+              hasFeedback
             >
               {
                 getFieldDecorator('residence', {
@@ -189,6 +225,7 @@ class RegPage extends Component {
             </Form.Item>
             <Form.Item
               label="Phone Number"
+              hasFeedback
             >
               {
                 getFieldDecorator('phone', {
@@ -203,6 +240,7 @@ class RegPage extends Component {
             </Form.Item>
             <Form.Item
               label="Website"
+              hasFeedback
             >
               {
                 getFieldDecorator('website', {

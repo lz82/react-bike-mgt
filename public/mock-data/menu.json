@@ -47,6 +47,11 @@
         "id": 18,
         "text": "basic",
         "link": "/admin/form/basic"
+      },
+      {
+        "id": 19,
+        "text": "userinfo",
+        "link": "/admin/form/userinfo"
       }
     ]
   },
