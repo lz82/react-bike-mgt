@@ -5,11 +5,11 @@ const { REACT_APP_URL_TYPE } = env
 function baseUrl () {
   switch (REACT_APP_URL_TYPE) {
     case 'dev':
-      return 'http://localhost:3000'
+      return 'https://www.easy-mock.com/mock/5d4b79559266cd24ba66c1ac/bike/v1'
     case 'prod':
-      return 'http://localhost:3000'
+      return 'https://www.easy-mock.com/mock/5d4b79559266cd24ba66c1ac/bike/v1'
     default:
-      return 'http://localhost:3000'
+      return 'https://www.easy-mock.com/mock/5d4b79559266cd24ba66c1ac/bike/v1'
   }
 }
 

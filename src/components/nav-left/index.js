@@ -17,9 +17,9 @@ class NavLeft extends Component {
   }
 
   async componentDidMount() {
-    const menu = await this.getMenuData()
+    const { menuList } = await this.getMenuData()
     this.setState({
-      menu: menu
+      menu: menuList
     })
   }
 
@@ -32,6 +32,7 @@ class NavLeft extends Component {
 
   async getMenuData() {
     const menu = await commonApi.getMenu()
+    console.log(menu)
     return menu
   }
 

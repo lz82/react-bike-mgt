@@ -56,6 +56,18 @@
     ]
   },
   {
+    "id": 20,
+    "text": "table",
+    "icon": "table",
+    "child": [
+      {
+        "id": 21,
+        "text": "basic table",
+        "link": "/admin/table/basic"
+      }
+    ]
+  },
+  {
     "id": 2,
     "icon": "desktop",
     "text": "Desktop",

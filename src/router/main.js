@@ -11,6 +11,8 @@ import Notification from '@/pages/notification'
 import BasicForm from '@/pages/form/basic'
 import UserInfoForm from '@/pages/form/userinfo'
 
+import BasicTable from '@/pages/table/basic'
+
 export default class MainRouter extends Component {
   render() {
     return (
@@ -24,6 +26,7 @@ export default class MainRouter extends Component {
           <Route path="/admin/component/notification" component={Notification} />
           <Route path="/admin/form/basic" component={BasicForm} />
           <Route path="/admin/form/userinfo" component={UserInfoForm} />
+          <Route path="/admin/table/basic" component={BasicTable} />
           <Route component={Home} />
         </Switch>
       </div>

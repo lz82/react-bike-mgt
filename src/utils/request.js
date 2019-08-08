@@ -16,7 +16,7 @@ export function AppGet(url, data) {
   return new Promise((resolve, reject) => {
     instance.get(url)
       .then(res => {
-        resolve(res.data)
+        resolve(res.data.data)
       })
       .catch(err => {
         reject(err)
