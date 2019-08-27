@@ -9,12 +9,20 @@ const { Column } = Table
 
 export default class BasicTablePage extends Component {
 
-  state = {}
+  state = {
+    loading: false
+  }
 
   async componentDidMount() {
+    this.setState({
+      loading: true
+    })
     const { userList } = await tableApi.getBasicTableData()
     this.setState({
       userList
+    })
+    this.setState({
+      loading: false
     })
   }
 
@@ -48,6 +56,20 @@ export default class BasicTablePage extends Component {
   ]
 
   render() {
+    const rowSelection = {
+      type: 'radio',
+
+      onChange(keys, rows) {
+        // console.log(`keys:${keys}, rows:${rows}`)
+      },
+
+      getCheckboxProps(record) {
+        return {
+          disabled: record.sex === 2
+        }
+      }
+    }
+
     return (
       <div className={css['basic-talbe-wrapper']}>
         <Card
@@ -56,6 +78,7 @@ export default class BasicTablePage extends Component {
         >
           <Table
             dataSource={this.state.userList}
+            loading={this.state.loading}
           >
             <Column
               title="Name"
@@ -92,8 +115,11 @@ export default class BasicTablePage extends Component {
           title="Render Column"
         >
           <Table
+            lading={this.state.loading}
             dataSource={this.state.userList}
             columns={this.columns}
+            rowSelection={rowSelection}
+            loading={this.state.loading}
           >
 
           </Table>

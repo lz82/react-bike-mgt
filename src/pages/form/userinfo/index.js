@@ -40,7 +40,7 @@ class UserInfoPage extends Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log(values)
+        // console.log(values)
       }
     })
   }

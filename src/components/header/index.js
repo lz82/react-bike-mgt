@@ -1,20 +1,26 @@
 import React, { Component } from 'react'
-import { Breadcrumb, Menu, Dropdown, Avatar, Tag } from 'antd'
+import { Menu, Dropdown, Avatar, Tag } from 'antd'
 import { withRouter } from 'react-router-dom'
+
+import { commonApi } from '@/service/index'
+
 import css from './index.module.less'
 
 class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentTime: ''
+      currentTime: '',
+      title: '',
+      tags: []
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     setInterval(() => {
       this.getTime()
     }, 1000)
+    await this.getTitle()
   }
 
   getWeek() {
@@ -49,6 +55,18 @@ class Header extends Component {
     this.props.history.push(link)
   }
 
+  getTitle = async () => {
+    const temp = await commonApi.getHeader()
+    this.setState({
+      title: temp.title,
+      tags: temp.tags
+    })
+  }
+
+  getTag = () => {
+    return '首页'
+  }
+
   render() {
     const menu = (
       <Menu>
@@ -64,10 +82,11 @@ class Header extends Component {
       <div className={css['header-container']}>
         <div className={css.header}>
           <div className={css.breadcrumb}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
+            {/* <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
+            </Breadcrumb> */}
+            {this.state.title}
           </div>
           <div className={css.info}>
             <span>{this.state.currentTime}</span>
@@ -87,20 +106,33 @@ class Header extends Component {
           </div>
         </div>
         <div className={css.tag}>
-          <Tag
+          {/* <Tag
             closable
             className={[css.tagitem, css.active]}
             onClick={() => this.handleTagClick('/admin/index')}
           >
-            Home
-          </Tag>
-          <Tag
+            {this.getTag()}
+          </Tag> */}
+          {/* <Tag
             closable
             className={[css.tagitem]}
             onClick={() => this.handleTagClick('/admin/index')}
           >
             other
-          </Tag>
+          </Tag> */}
+          {
+            this.state.tags.map((item, index) => {
+              return (
+                <Tag
+                  closable
+                  className={[css.tagitem, index === 1 ? css.active : '']}
+                  key={index}
+                >
+                  {item}
+                </Tag>
+              )
+            })
+          }
         </div>
       </div>
     )

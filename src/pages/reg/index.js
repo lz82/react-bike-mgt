@@ -61,13 +61,13 @@ class RegPage extends Component {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, val) => {
       if (!err) {
-        console.log(val)
+        // console.log(val)
       }
     })
   }
 
   handleConfirmBlur = e => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     if (e.target.value) {
       this.setState({
         confirmDirty: true
@@ -76,7 +76,7 @@ class RegPage extends Component {
   }
 
   validate2Confirm = (rule, value, cb) => {
-    console.log(rule)
+    // console.log(rule)
     const { form } = this.props
     if (value && this.state.confirmDirty) {
       form.validateFields(['confirm'], { force: true })

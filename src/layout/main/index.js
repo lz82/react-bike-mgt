@@ -8,7 +8,8 @@ import NavLeft from '@/components/nav-left'
 import CustomerHeader from '@/components/header'
 
 import css from './index.module.less'
-import logo from '@/styles/assets/img/logo.svg'
+import './index.less'
+import logo from '@/styles/assets/img/sstir-logo.png'
 
 const { Header, Content, Footer, Sider } = Layout
 
@@ -28,7 +29,7 @@ export default class LayoutMain extends Component {
             collapsible
           >
             <div className={css.logo}>
-              <img src={logo} width="50px" height="50px" />
+              <img src={logo} width="170px" height="60px" />
             </div>
             <NavLeft />
           </Sider>

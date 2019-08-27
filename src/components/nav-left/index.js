@@ -32,7 +32,6 @@ class NavLeft extends Component {
 
   async getMenuData() {
     const menu = await commonApi.getMenu()
-    console.log(menu)
     return menu
   }
 

@@ -56,10 +56,10 @@ export default class ModalPage extends Component {
         disabled: true
       },
       onOk() {
-        console.log('OK')
+        // console.log('OK')
       },
       onCancel() {
-        console.log('Cancel')
+        // console.log('Cancel')
       }
     })
   }
@@ -75,7 +75,7 @@ export default class ModalPage extends Component {
         </div>
       ),
       onOk() {
-        console.log('tip ok')
+        // console.log('tip ok')
       }
     })
   }

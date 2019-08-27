@@ -15,7 +15,7 @@ export default class NotificationPage extends Component {
       description: 'notification desc',
       duration: 2,
       onClick() {
-        console.log('nofitication click...')
+        // console.log('nofitication click...')
       }
     })
   }
