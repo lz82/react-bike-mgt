@@ -16,7 +16,15 @@ const { Header, Content, Footer, Sider } = Layout
 export default class LayoutMain extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      isCollapse: false
+    }
+  }
+
+  handleCollapse = val => {
+    this.setState({
+      isCollapse: val
+    })
   }
 
   render() {
@@ -27,11 +35,15 @@ export default class LayoutMain extends Component {
         >
           <Sider
             collapsible
+            onCollapse={this.handleCollapse}
+            defaultCollapsed={false}
           >
             <div className={css.logo}>
-              <img src={logo} width="170px" height="60px" />
+              <img src={logo} width="100%" />
             </div>
-            <NavLeft />
+            <NavLeft
+              isCollapse={this.state.isCollapse}
+            />
           </Sider>
           <Layout>
             <Header

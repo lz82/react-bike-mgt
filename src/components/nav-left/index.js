@@ -23,6 +23,10 @@ class NavLeft extends Component {
     })
   }
 
+  componentDidUpdate() {
+    console.log('update', this.props.isCollapse)
+  }
+
   // async componentWillMount() {
   //   const menu = await this.getMenuData()
   //   this.setState({
