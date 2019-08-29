@@ -25,7 +25,7 @@ class NavLeft extends Component {
   }
 
   componentDidUpdate() {
-    console.log('update', this.props.collapsed)
+    console.log('update', this.props.isCollapse)
   }
 
   // async componentWillMount() {

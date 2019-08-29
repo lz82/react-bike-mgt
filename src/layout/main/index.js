@@ -38,10 +38,10 @@ export default class LayoutMain extends Component {
             onCollapse={this.handleCollapse}
           >
             <div className={css.logo}>
-              <img src={logo} width="170px" height="60px" />
+              <img src={logo} width="100%" />
             </div>
             <NavLeft
-              collapsed={this.state.isCollapsed}
+              isCollapse={this.state.isCollapse}
             />
           </Sider>
           <Layout>

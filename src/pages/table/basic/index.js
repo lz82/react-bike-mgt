@@ -60,7 +60,7 @@ export default class BasicTablePage extends Component {
       type: 'radio',
 
       onChange(keys, rows) {
-        // console.log(`keys:${keys}, rows:${rows}`)
+        console.log(`keys:${keys}, rows:${rows}`)
       },
 
       getCheckboxProps(record) {
