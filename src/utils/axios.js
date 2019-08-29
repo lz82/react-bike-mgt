@@ -7,17 +7,40 @@ const instance = axios.create({
   timeout: 5000
 })
 
+const loadingMask = document.querySelector('#loading-mask')
+
+const showLoading = () => {
+  loadingMask.style.display = 'flex'
+}
+
+const closeLoading = () => {
+  loadingMask.style.display = 'none'
+}
+
+let reqList = []
+
 instance.interceptors.request.use(
   config => {
     config.headers['X-Token'] = 'aaa'
+
+    // 判断是否重复请求
+    const request = JSON.stringify(config)
+
+    if (!reqList.includes(request)) {
+      reqList.push(request)
+    }
+
+    showLoading()
+
     return config
   },
   error => {
     // Do something with request error
     message.error({
-      content: error.toString(),
+      content: error,
       duration: 2000
     })
+    closeLoading()
     return Promise.reject(error)
   }
 )
@@ -34,19 +57,23 @@ instance.interceptors.response.use(
     //   return Promise.reject(response.data.message)
     // }
     // 这里也可以根据返回的Code做一些指定处理
+    reqList.splice(reqList.findIndex(item => item === JSON.stringify(response.config)), 1)
+    if (reqList.length === 0) {
+      closeLoading()
+    }
     return response
   },
   error => {
+    // 发生异常时，清空请求列表
+    reqList.length = 0
+
     if (error.response) {
       // 特殊处理一些请求
       // if (error.response.status === 401) {
       // }
     }
-
-    message.error({
-      content: error.toString(),
-      duration: 2000
-    })
+    closeLoading()
+    message.error(error.toString())
     return Promise.reject(error)
   }
 )

@@ -18,9 +18,14 @@ class NavLeft extends Component {
 
   async componentDidMount() {
     const { menuList } = await this.getMenuData()
+    console.log(this.props.collapsed)
     this.setState({
       menu: menuList
     })
+  }
+
+  componentDidUpdate() {
+    console.log('update', this.props.collapsed)
   }
 
   // async componentWillMount() {
